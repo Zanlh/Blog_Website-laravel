@@ -50,12 +50,12 @@ class AdminLoginController extends Controller
         return view('auth.admin_login');
     }
 
-    // protected function authenticated(Request $request, $user)
-    // {
-    //     $user->ip = $request->ip();
-    //     $user->user_agent = $request->server('HTTP_USER_AGENT');
-    //     $user->update();
+    protected function authenticated(Request $request, $user)
+    {
+        $user->ip = $request->ip();
+        $user->user_agent = $request->server('HTTP_USER_AGENT');
+        $user->update();
 
-    //     return redirect($this->redirectTo);
-    // }
+        return redirect($this->redirectTo);
+    }
 }
