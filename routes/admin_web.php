@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::prefix('admin')->middleware('auth:admin_user')->namespace('Backend')->group(function(){
+Route::prefix('admin')->name('admin.')->middleware('auth:admin_user')->namespace('Backend')->group(function(){
     Route::get('/','PageController@home')->name('home');
+
+    Route::resource('admin-user','AdminUserController');
+    Route::get('admin-user/datatable/ssd','AdminUserController@ssd');
 });

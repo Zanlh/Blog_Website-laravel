@@ -1,5 +1,7 @@
 @extends('backend.layouts.app')
 @section('home-active','active')
+@section('title','Dashboard')
+@section('header-name','Dashboard')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

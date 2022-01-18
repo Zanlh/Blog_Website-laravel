@@ -1,5 +1,36 @@
+/* 
+============================
+Theme Design
+============================
+Theme - #84CB9A
+border-radius: 10px
+font-size: 15px
+box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+*/
+
+body {
+    font-family: 'Open San', sans-serif;
+    color: black;
+    font-weight: 600;
+}
+
+.card {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    border: none;
+    border-radius: 10px;
+}
+
+
 /* ============Button===================== */
 
-.btn-theme {
+.card .btn-theme {
     background: #84CB9A;
+    color: rgb(54, 54, 54);
+    font-weight: 700;
+}
+
+.form .btn-theme {
+    background: #84CB9A;
+    color: rgb(54, 54, 54);
+    font-weight: 700;
 }
