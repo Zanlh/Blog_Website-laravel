@@ -23,6 +23,12 @@
           <p>Admin User</p>
         </a>
       </li>
+      <li class="@yield('user-active') ">
+        <a href="{{route('admin.user.index')}}">
+          <i class="fas fa-user"></i>
+          <p>User</p>
+        </a>
+      </li>
     </ul>
   </div>
 </div>

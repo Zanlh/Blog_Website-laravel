@@ -2,26 +2,27 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\AdminUser;
+use App\User;
 use Carbon\Carbon;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUser;
 use Yajra\Datatables\Datatables;
+use App\Http\Requests\UpdateUser;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\StoreAdminUser;
-use App\Http\Requests\UpdateAdminUser;
 
-class AdminUserController extends Controller
+class UserController extends Controller
 {
     public function index()
     {
-        return view('backend.admin_user.index');
+        return view('backend.user.index');
     }
 
     public function ssd()
     {
-        $data = AdminUser::query();
+        $data = User::query();
         return Datatables::of($data)
             ->editColumn('user_agent', function ($each) {
                 if ($each->user_agent) {
@@ -47,11 +48,14 @@ class AdminUserController extends Controller
             ->editColumn('updated_at', function ($each) {
                 return Carbon::parse($each->updated_at)->format('Y-m-d H:i:s');
             })
+            // ->editColumn('login_at', function($each){
+            //     return Carbon::parse($each -> login_at)->format('Y-m-d H:i:s');
+            // })
             ->addColumn('action', function ($each) {
-                $edit_icon = '<a href="' . route('admin.admin-user.edit', $each->id) . '" class="text-warning"><i class="fas fa-edit"></i></a>';
+                $edit_icon = '<a href="' . route('admin.user.edit', $each->id) . '" class="text-warning"><i class="fas fa-edit"></i></a>';
                 $delete_icon = '<a href="#" class="text-danger delete" data-id="' . $each->id . '"><i class="fas fa-trash"></i></a>';
 
-                return  '<div class="action-icon">' . $edit_icon .  '   ' . $delete_icon . '</div>';
+                return  '<div class="action-icon">' . $edit_icon . '   ' .  $delete_icon . '</div>';
             })
             ->rawColumns(['user_agent', 'action'])
             ->make(true);
@@ -59,43 +63,50 @@ class AdminUserController extends Controller
 
     public function create()
     {
-        return view('backend.admin_user.create');
+        return view('backend.user.create');
     }
 
-    public function store(StoreAdminUser $request)
-    {
-        $admin_user = new AdminUser();
-        $admin_user->name = $request->name;
-        $admin_user->email = $request->email;
-        $admin_user->password = Hash::make($request->password);
-        $admin_user->save();
 
-        return redirect()->route('admin.admin-user.index')->with('create', 'Successfully Created');
+    public function store(StoreUser $request)
+    {
+
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+
+
+        return redirect()->route('admin.user.index')->with('create', 'Successfully Created');
     }
 
     public function edit($id)
     {
-        $admin = AdminUser::findOrFail($id);
-        return view('backend.admin_user.edit', compact('admin'));
+        $user = User::findOrFail($id);
+        return view('backend.user.edit', compact('user'));
     }
 
-    public function update($id, UpdateAdminUser $request)
+    public function update($id, UpdateUser $request)
     {
 
-        $admin_user = AdminUser::findOrFail($id);
-        $admin_user->name = $request->name;
-        $admin_user->email = $request->email;
-        $admin_user->password = $request->password ? Hash::make($request->password) : $admin_user->password;
-        $admin_user->update();
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
 
-        return redirect()->route('admin.admin-user.index')->with('update', 'Successfully Updated');
+        $user->password = $request->password ? Hash::make($request->password) : $user->password;
+        $user->update();
+
+
+
+        return redirect()->route('admin.user.index')->with('update', 'Successfully Updated');
     }
-
 
     public function destroy($id)
     {
-        $admin_user = AdminUser::findOrFail($id);
-        $admin_user->delete();
+        $user = User::findOrFail($id);
+        $user->delete();
 
         return 'success';
     }

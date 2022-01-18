@@ -1,14 +1,14 @@
 @extends('backend.layouts.app')
-@section('admin-active', 'active')
-@section('title', 'Admin')
-@section('header-name', 'Admin')
+@section('category-active', 'active')
+@section('title', 'Category')
+@section('header-name', 'Category')
 @section('content')
     <div class="container">
         <div class="main-content">
             <div class="card">
                 <div class="card-body">
                     <div class="pt-3 mb-2">
-                        <a href="{{route('admin.admin-user.create')}}" class="btn btn-theme"> <i class="fas fa-user-tie"></i> Create Admin</a>
+                        <a href="{{route('admin.user.create')}}" class="btn btn-theme"> <i class="fas fa-user"></i> Create User</a>
                     </div>
                     <table class="table-responsive table  table-bordered display Datatable" style="width:100%">
                         <thead>
@@ -37,7 +37,7 @@
                 processing: true,
                 serverSide: true,
                 responsive: true,
-                ajax: "/admin/admin-user/datatable/ssd",
+                ajax: "/admin/user/datatable/ssd",
                 columns: [{
                         data: "name",
                         name: "name",
@@ -86,7 +86,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                        $.ajax({
-                           url : '/admin/admin-user/' + id,
+                           url : '/admin/user/' + id,
                            type : 'DELETE', 
                            success: function() {
                                table.ajax.reload();
