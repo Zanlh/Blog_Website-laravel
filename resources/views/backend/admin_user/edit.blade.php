@@ -20,7 +20,7 @@
             <input type="password" class="form-control" name="password">
         </div>
 
-        <button class="btn btn-secondary">Cancel</button>
+        <button class="btn btn-secondary back-btn">Cancel</button>
         <button type="submit" class="btn btn-theme">Submit</button>
     </form>
 @endsection

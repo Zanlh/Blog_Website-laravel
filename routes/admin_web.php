@@ -23,4 +23,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin_user')->namespace
     
     Route::resource('user','UserController');
     Route::get('user/datatable/ssd','UserController@ssd');
+    
+    Route::resource('category','CategoryController');
+    Route::get('category/datatable/ssd','CategoryController@ssd');
 });

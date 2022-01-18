@@ -8,18 +8,14 @@
             <div class="card">
                 <div class="card-body">
                     <div class="pt-3 mb-2">
-                        <a href="{{route('admin.user.create')}}" class="btn btn-theme"> <i class="fas fa-user"></i> Create User</a>
+                        <a href="{{route('admin.category.create')}}" class="btn btn-theme"> <i class="fas fa-plus"></i> Add Category</a>
                     </div>
                     <table class="table-responsive table  table-bordered display Datatable" style="width:100%">
                         <thead>
                             <tr class="bg-light">
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>IP</th>
-                                <th class="no-sort">User Agent</th>
-                                <th>Created</th>
-                                <th>Updated</th>
-                                <th class="no-sort">Action</th>
+                                <th>Category Name</th>
+                                <th>Category Description</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,41 +33,28 @@
                 processing: true,
                 serverSide: true,
                 responsive: true,
-                ajax: "/admin/user/datatable/ssd",
+                ajax: "/admin/category/datatable/ssd",
                 columns: [{
-                        data: "name",
-                        name: "name",
+                        data: "category_name",
+                        name: "category_name",
                     },
                     {
-                        data: "email",
-                        name: "email",
+                        data: "category_desc",
+                        name: "category_desc",
                     },  
-                    {
-                        data: "ip",
-                        name: "ip"
-                    },
-                    {
-                        data: "user_agent",
-                        name: "user_agent",
-                    },
-                    {
-                        data: "created_at",
-                        name: "created_at",
-                    },
-                    {
-                        data: "updated_at",
-                        name: "updated_at",
-                    },
                     {
                         data: "action",
                         name: "action",
                     },
+                    // {
+                    //     data: "created_at",
+                    //     name: "created_at",
+                    // },
+                    // {
+                    //     data: "updated_at",
+                    //     name: "updated_at",
+                    // },
                 ],
-                order: [[ 5, "desc" ]],
-                columnDefs: [{
-                    targets: 'no-sort',
-                    sortable: false
-                }]
 
             });
             $(document).on('click', '.delete', function(e) {
@@ -86,7 +69,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                        $.ajax({
-                           url : '/admin/user/' + id,
+                           url : '/admin/category/' + id,
                            type : 'DELETE', 
                            success: function() {
                                table.ajax.reload();

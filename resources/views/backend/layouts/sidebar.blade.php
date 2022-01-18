@@ -29,6 +29,12 @@
           <p>User</p>
         </a>
       </li>
+      <li class="@yield('category-active') ">
+        <a href="{{route('admin.category.index')}}">
+          <i class="fas fa-clipboard"></i>
+          <p>Category</p>
+        </a>
+      </li>
     </ul>
   </div>
 </div>
