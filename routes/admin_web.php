@@ -29,4 +29,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin_user')->namespace
     
     Route::get('post','PostController@index');
     Route::get('post/datatable/ssd','PostController@ssd');
+
+    Route::get('profile/{id}','AdminUserController@profile');
 });

@@ -20,7 +20,7 @@ class PostController extends Controller
         ->addColumn('by',function($each){
             $user=$each->user;
             if($user){
-                return '<p>Name : ' . $user->name . ' </p><p>Email : ' . $user->email . '</p>';
+                return '<p>' . $user->name . ' </p>';
             }
             return '-';
         })

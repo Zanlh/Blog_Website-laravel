@@ -13,4 +13,8 @@ class Post extends Model
     public function category(){
         return $this->belongsTo(Category::class,'category_id','id');
     }
+
+    public function photos(){
+        return $this->morphMany(media::class,'imageable');
+    }
 }

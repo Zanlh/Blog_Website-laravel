@@ -24,4 +24,8 @@ class AdminUser extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function photos(){
+        return $this->morphMany(media::class,'imageable');
+    }
 }

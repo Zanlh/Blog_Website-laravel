@@ -99,4 +99,10 @@ class AdminUserController extends Controller
 
         return 'success';
     }
+
+    public function profile($id){
+        $admin_user = AdminUser::findOrFail($id);
+        return view('backend.admin_user.profile', compact('admin_user'));
+        
+    }
 }

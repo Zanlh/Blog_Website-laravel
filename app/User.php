@@ -41,4 +41,8 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany(Post::class,'user_id','id');
     }
+
+    public function photos(){
+        return $this->morphMany(media::class,'imageable');
+    }
 }

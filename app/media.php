@@ -4,8 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-// TODO:
 class media extends Model
 {
-    //
+    public function imageable()
+    {
+        return $this->morphTo();
+    }
 }
