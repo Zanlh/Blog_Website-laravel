@@ -26,4 +26,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin_user')->namespace
     
     Route::resource('category','CategoryController');
     Route::get('category/datatable/ssd','CategoryController@ssd');
+    
+    Route::get('post','PostController@index');
+    Route::get('post/datatable/ssd','PostController@ssd');
 });

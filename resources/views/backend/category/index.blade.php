@@ -34,7 +34,8 @@
                 serverSide: true,
                 responsive: true,
                 ajax: "/admin/category/datatable/ssd",
-                columns: [{
+                columns: [
+                    {
                         data: "category_name",
                         name: "category_name",
                     },

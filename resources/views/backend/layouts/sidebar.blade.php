@@ -35,6 +35,12 @@
           <p>Category</p>
         </a>
       </li>
+      <li class="@yield('post-active') ">
+        <a href="{{url('admin/post')}}">
+          <i class="fas fa-list"></i>
+          <p>Post</p>
+        </a>
+      </li>
     </ul>
   </div>
 </div>

@@ -53,7 +53,7 @@
     <div class="wrapper ">
         {{-- sidebar --}}
         @include('backend.layouts.sidebar')
-
+        {{-- FIXME:  --}}
         <div class="main-panel">
             <!-- Navbar -->
             {{-- Header --}}
