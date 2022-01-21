@@ -22,5 +22,7 @@ Route::post('admin/logout','Auth\AdminLoginController@logout')-> name('admin.log
 
 // User Login
 Auth::routes();
+Route::middleware('auth')->namespace('Frontend')->group(function(){
 
-Route::get('/', 'Frontend\PageController@home');
+    Route::get('/', 'PageController@home');
+});

@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreAdminUser;
 use App\Http\Requests\UpdateAdminUser;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\UpdateAdminProfile;
 
 class AdminUserController extends Controller
 {

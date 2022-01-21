@@ -39,12 +39,9 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item"
-                            href="{{ url(
-    'admin/profile/' .
-        auth()->guard('admin_user')->user()->id,
-) }}">Profile</a>
+                            href="{{ url('admin/profile/' .auth()->guard('admin_user')->user()->id,) }}">Profile</a>
                         <a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault();
-              document.getElementById('logout-form').submit();">Logout</a>
+                            document.getElementById('logout-form').submit();">Logout</a>
                         <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
                             class="d-none">
                             @csrf
