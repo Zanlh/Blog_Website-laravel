@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\media;
 use App\AdminUser;
 use Carbon\Carbon;
 use Jenssegers\Agent\Agent;
@@ -11,6 +12,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreAdminUser;
 use App\Http\Requests\UpdateAdminUser;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UpdateAdminProfile;
 
 class AdminUserController extends Controller
 {
@@ -100,9 +103,70 @@ class AdminUserController extends Controller
         return 'success';
     }
 
-    public function profile($id){
+    public function profile($id)
+    {
         $admin_user = AdminUser::findOrFail($id);
-        return view('backend.admin_user.profile', compact('admin_user'));
-        
+        $profile_photos = $admin_user->photos->where('type', 1);
+        $cover_photos = $admin_user->photos->where('type', 2);
+        return view('backend.admin_user.profile', compact('admin_user', 'id', 'cover_photos', 'profile_photos'));
+    }
+
+    public function updateProfile($id, Request $request)
+    {
+        $admin_user = AdminUser::findOrFail($id);
+        $profile_photos = $admin_user->photos->where('type', 1);
+        $cover_photos = $admin_user->photos->where('type', 2);
+
+        if ($request->hasFile('profile')) {
+            foreach ($profile_photos as $profile_photo) {
+                if ($profile_photo != null) {
+                    Storage::disk('public')->delete('profile/'. $profile_photo->path);
+                    $profile_photo->delete();
+                }
+            }
+
+            $profile_photo_file = $request->file('profile');
+            $profile_file_name = time() . '.' . $profile_photo_file->getClientOriginalExtension();
+            Storage::disk('public')->put('profile/'. $profile_file_name ,
+                file_get_contents($profile_photo_file->getRealPath()));
+
+            $new_profile_photo = new media();
+            $new_profile_photo->path = $profile_file_name;
+            $new_profile_photo->imageable_id = $admin_user->id;
+            $new_profile_photo->imageable_type = AdminUser::class;
+            $new_profile_photo->type = 1;
+            $new_profile_photo->save();
+
+        }
+
+        if ($request->hasFile('cover')) {
+            foreach ($cover_photos as $cover_photo) {
+                if ($cover_photo != null) {
+                    Storage::disk('public')->delete('cover/'. $cover_photo->path);
+                    $cover_photo->delete();
+                }
+            }
+
+            $cover_photo_file = $request->file('cover');
+            $cover_file_name = time() . '.' . $cover_photo_file->getClientOriginalExtension();
+            Storage::disk('public')->put('cover/'. $cover_file_name ,
+                file_get_contents($cover_photo_file->getRealPath()));
+
+            $new_cover_photo = new media();
+            $new_cover_photo->path = $cover_file_name;
+            $new_cover_photo->imageable_id = $admin_user->id;
+            $new_cover_photo->imageable_type = AdminUser::class;
+            $new_cover_photo->type = 2;
+            $new_cover_photo->save();
+
+        }
+
+
+        $admin_user->name = $request->name;
+        $admin_user->email = $request->email;
+        $admin_user->password = $request->password ? Hash::make($request->password) : $admin_user->password;
+        $admin_user->update();
+
+        return redirect()->route('admin.profile', $id)->with('update', 'Successfully Updated');
     }
 }

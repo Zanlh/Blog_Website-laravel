@@ -53,12 +53,10 @@
     <div class="wrapper ">
         {{-- sidebar --}}
         @include('backend.layouts.sidebar')
-        {{-- FIXME:  --}}
         <div class="main-panel">
             <!-- Navbar -->
             {{-- Header --}}
             @include('backend.layouts.header')
-            <!-- End Navbar -->
             {{-- content --}}
             <div class="content">
                 @yield('content')
@@ -78,7 +76,7 @@
                             <span class="copyright">
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script>, made with <i class="fa fa-heart heart"></i> by Zan Lwine Htoo
+                                </script>, made with <i class="fas fa-heart heart"></i> by Zan Lwine Htoo
                             </span>
                         </div>
                     </div>
@@ -88,14 +86,14 @@
     </div>
 
     <!--   Core JS Files   -->
-    <script src="{{ asset('backend/assets/js/core/popper.min.js') }}"></script>
+    {{-- <script src="{{ asset('backend/assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/core/jquery.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/core/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
     <!--  Google Maps Plugin    -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <!-- Chart JS -->
-    <script src="{{ asset('backend/assets/js/plugins/chartjs.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/plugins/chartjs.min.js') }}"></script> --}}
     <!--  Notifications Plugin    -->
     <script src="{{ asset('backend/assets/js/plugins/bootstrap-notify.js') }}"></script>
     {{-- Bootstrap js --}}
