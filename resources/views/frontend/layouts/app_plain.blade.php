@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="{{asset('frontend/images/icons/favicon.ico')}}"/>
+	{{-- <link rel="icon" type="image/png" href="{{asset('frontend/images/icons/favicon.ico')}}"/> --}}
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('frontend/vendor/bootstrap/css/bootstrap.min.css')}}">
 <!--===============================================================================================-->
