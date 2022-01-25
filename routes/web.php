@@ -25,4 +25,8 @@ Auth::routes();
 Route::middleware('auth')->namespace('Frontend')->group(function(){
 
     Route::get('/', 'PageController@home');
+
+    Route::get('/profile', 'PageController@profile');
+    Route::get('/profile/{id}', 'PageController@edit');
+    Route::put('/profile/update/{id}','PageController@updateUserProfile');
 });
