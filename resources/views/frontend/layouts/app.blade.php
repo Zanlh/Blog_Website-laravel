@@ -32,8 +32,9 @@
     {{-- ========================Nav bar=============================== --}}
     <nav>
         <div class="container">
-            <h2 class="log" ><a style="color:#84CB9A" href="{{url('/')}}">{{ config('app.name', 'Laravel') }}</a></h2>
-        @guest
+            <h2 class="log"><a style="color:#84CB9A"
+                    href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a></h2>
+            @guest
                 @if (Route::has('register'))
                 @endif
             @else
@@ -43,24 +44,23 @@
                 </div>
                 <div class="create">
                     <label for="create-post" class="btn btn-primary">Create</label>
-                    <img class="profile-photo" src="{{ asset('frontend/images/pfp.jpg') }}" alt="">
 
-                    {{-- <div class="dropdown">
+                    <div class="dropdown">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                             aria-expanded="true">
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">Profile</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">Logout</a>
+                                                    document.getElementById('logout-form').submit();">Logout</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </div>
-                    </div> --}}
+                    </div>
+                    
                 </div>
-        </div>
+            </div>
         @endguest
     </nav>
     {{-- ========================Main=============================== --}}
@@ -74,18 +74,23 @@
             {{-- ===============================Right======================= --}}
             @include('frontend.layouts.activity')
         </div>
-        
+
     </main>
 
     {{-- Bootstrap JS --}}
-    <script src=" https://code.jquery.com/jquery-3.5.1.js"></script>
-   
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
         integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous">
     </script>
+     <!-- Laravel Javascript Validation -->
+     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+    @yield('scripts')
 </body>
 
 

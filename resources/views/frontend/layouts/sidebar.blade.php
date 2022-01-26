@@ -28,7 +28,7 @@
             <span><i class="fas fa-bookmark"></i></span>
             <h3>Bookmarks</h3>
         </a>
-        <a class="menu-item" @yield('profile-active') href="{{url('/profile')}}">
+        <a class="menu-item active" @yield('profile-active') href="{{url('/profile/'. auth()->user()->id)}}">
             <span><i class="fas fa-user"></i></span>
             <h3>Profile</h3>
         </a>

@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreAdminUser;
 use App\Http\Requests\UpdateAdminUser;
+use App\Http\Requests\UpdateUserProfile;
 use Illuminate\Support\Facades\Storage;
 
 class AdminUserController extends Controller
@@ -110,7 +111,7 @@ class AdminUserController extends Controller
         return view('backend.admin_user.profile', compact('admin_user', 'id', 'cover_photos', 'profile_photos'));
     }
 
-    public function updateProfile($id, Request $request)
+    public function updateProfile($id, UpdateUserProfile $request)
     {
         $admin_user = AdminUser::findOrFail($id);
         $profile_photos = $admin_user->photos->where('type', 1);

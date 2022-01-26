@@ -26,7 +26,7 @@ Route::middleware('auth')->namespace('Frontend')->group(function(){
 
     Route::get('/', 'PageController@home');
 
-    Route::get('/profile', 'PageController@profile');
-    Route::get('/profile/{id}', 'PageController@edit');
+    Route::get('/profile/{id}', 'PageController@profile')->name('profile');
+    Route::get('/profile/edit/{id}', 'PageController@edit')->name('profile.edit');
     Route::put('/profile/update/{id}','PageController@updateUserProfile');
 });

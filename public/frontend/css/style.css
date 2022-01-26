@@ -6,7 +6,7 @@
     --color-black: hsl(252, 30%, 10%);
     --color-white: hsl(252, 30%, 100%);
     --color-light: hsl(252, 30%, 100%);
-    --color-gery: hsl(252, 15%, 65%);
+    --color-grey: hsl(252, 15%, 65%);
     --color-danger: hsl(6, 78%, 57%);
     --color-success: hsl(145, 61%, 69%);
     --color-primary: #84CB9A;
@@ -120,7 +120,7 @@ img {
 }
 
 .text-muted {
-    color: var(--color-gery);
+    color: var(--color-grey);
 }
 
 .card {
@@ -180,7 +180,7 @@ nav .search-bar input[type="search"] {
 }
 
 nav .search-bar input[type="search"]::placeholder {
-    color: var(--color-gery);
+    color: var(--color-grey);
     font-size: small;
 }
 
@@ -194,7 +194,7 @@ nav .create {
 /* ==================================================================== */
 
 .container .dropdown a {
-    color: var(--color-gery);
+    color: var(--color-grey);
     text-decoration: none;
 }
 
@@ -257,7 +257,7 @@ main .container .left .profile {
 
 .left .sidebar i {
     font-size: 1.17rem;
-    color: var(--color-gery);
+    color: var(--color-grey);
     margin-left: 2rem;
     position: relative;
 }
@@ -346,6 +346,7 @@ main .container .right {
     height: 124px;
     position: relative;
     box-shadow: var(--box-shadow);
+    border: var(--color-dark);
     border-radius: var(--border-radius);
 }
 
