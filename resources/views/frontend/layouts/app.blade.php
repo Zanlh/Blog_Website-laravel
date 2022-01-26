@@ -90,6 +90,54 @@
     </script>
      <!-- Laravel Javascript Validation -->
      <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+      {{-- sweet-alert2 --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script>
+        $(document).ready(function() {
+            let token = document.head.querySelector('meta[name = "csrf-token"]');
+            if (token) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF_TOKEN': token.content,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    }
+                });
+            }
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            @if (session('create'))
+                Toast.fire({
+                icon: 'success',
+                title: '{{ session('create') }}'
+                });
+            @endif
+
+            @if (session('update'))
+                Toast.fire({
+                icon: 'success',
+                title: '{{ session('update') }}'
+                });
+            @endif
+
+            $('.back-btn').on('click', function(e) {
+                e.preventDefault();
+                window.history.go(-1);
+                return false;
+            });
+        });
+    </script>
     @yield('scripts')
 </body>
 

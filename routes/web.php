@@ -29,4 +29,7 @@ Route::middleware('auth')->namespace('Frontend')->group(function(){
     Route::get('/profile/{id}', 'PageController@profile')->name('profile');
     Route::get('/profile/edit/{id}', 'PageController@edit')->name('profile.edit');
     Route::put('/profile/update/{id}','PageController@updateUserProfile');
+
+    Route::get('/update/password','PageController@updatePassword');
+    Route::put('/update/password/store','PageController@updatePasswordStore');
 });

@@ -1,6 +1,19 @@
 <div class="left">
     <div class="profile">
-        <img class="profile-photo" src="{{ asset('frontend/images/pfp.jpg') }}" alt="">
+        <div class="profile-photo">
+            @if (Auth()->user()->photos->where('type', 1)->first() == null)
+                <img class="avatar" src="https://ui-avatars.com/api/?size=100&name={{ $Auth()->user()->name }}"
+                    alt="...">
+            @else
+                <img class="avatar"
+                    src="{{ asset(
+    'storage/profile/' .
+        Auth()->user()->photos->where('type', 1)->first()->path,
+) }}"
+                    alt="...">
+            @endif
+        </div>
+
         <div class="handle">
             <h4>{{ Auth()->user()->name }}</h4>
         </div>
@@ -28,7 +41,7 @@
             <span><i class="fas fa-bookmark"></i></span>
             <h3>Bookmarks</h3>
         </a>
-        <a class="menu-item active" @yield('profile-active') href="{{url('/profile/'. auth()->user()->id)}}">
+        <a class="menu-item active" @yield('profile-active') href="{{ url('/profile/' . auth()->user()->id) }}">
             <span><i class="fas fa-user"></i></span>
             <h3>Profile</h3>
         </a>

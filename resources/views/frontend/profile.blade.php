@@ -25,22 +25,22 @@
                                     alt="...">
                             @endif
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <div class="info">
                                 {{ Auth()->user()->name }}<br>
                                 <div class="text-muted"> <small>{{ $user->email }}</small></div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-5"> 
                             <div class="edit">
-                                <a type="button" class="btn btn-dark" id="dropdownMenuLink" data-toggle="dropdown"
+                                <a type="button" class="btn btn-dark dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"
                                     aria-expanded="false"
                                     href="{{ url('/profile/edit/' . auth()->user()->id) }}"><small>Update</small></a>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item" href="{{ url('/profile/edit/' . auth()->user()->id) }}">
                                         <small>Update Profile</small> </a>
-                                    <a class="dropdown-item" href="#"><small>Update Password</small></a>
+                                    <a class="dropdown-item" href="{{url('/update/password')}}"><small>Update Password</small></a>
                                 </div>
                             </div>
                         </div>
@@ -52,8 +52,3 @@
     </div>
 @endsection
 
-
-{{-- src="{{ asset('storage/cover/1642751204.jfif') }}
-src="{{ asset('storage/profile/1642772392.jpg') }} --}}
-
-{{-- href="{{ url('/profile/edit/' . auth()->user()->id) }}" --}}

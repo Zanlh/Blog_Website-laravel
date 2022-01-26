@@ -7,8 +7,10 @@ use App\media;
 use App\AdminUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateUserProfile;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UpdateUserProfile;
 
 class PageController extends Controller
 {
@@ -93,5 +95,31 @@ class PageController extends Controller
         $user->update();
 
         return redirect()->route('profile',$id)->with('update', 'Successfully Updated');
+    }
+
+    public function updatePassword(){
+        return view('frontend.update_password');
+    }
+
+    public function updatePasswordStore(Request $request){
+
+        $request->validate([
+            'old_password' => 'required' ,
+            'new_password' => 'required|min:6|max:20'
+            
+        ]);
+        $old_password = $request->old_password;
+        $new_password = $request->new_password;
+        $user = Auth::guard('web')->user();
+        
+        if (Hash::check($old_password, $user->password)) {
+            $user->password = Hash::make($new_password);
+            $user->update();
+
+            return redirect()->route('profile',$user->id)->with('update', 'Successfully Updated.');
+        }
+
+        return back()->withErrors(['old_password' => 'The old password is not correct!'])->withInput();
+
     }
 }

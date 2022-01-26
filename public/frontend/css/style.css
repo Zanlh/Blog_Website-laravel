@@ -331,12 +331,12 @@ main .container .right {
     margin-top: -70px;
 }
 
-.user-profile .card-body .author .row .col-md-5 .info {
+.user-profile .card-body .author .row .col-md-4 .info {
     font-weight: bold;
     margin-top: 65px;
 }
 
-.user-profile .card-body .author .row .col-md-4 .edit {
+.user-profile .card-body .author .row .col-md-5 .edit {
     font-weight: bold;
     margin-top: 65px;
 }
