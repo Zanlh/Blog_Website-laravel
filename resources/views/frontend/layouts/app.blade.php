@@ -54,7 +54,7 @@
                     <input type="search" placeholder="Search for articles,creators ">
                 </div>
                 <div class="create">
-                    <label for="create-post" class="btn btn-primary">Create</label>
+                    <a for="create-post"  href="{{url('/create-post')}}" class="btn btn-primary">Create</a>
 
                     <div class="dropdown">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"

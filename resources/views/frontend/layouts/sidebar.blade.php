@@ -21,7 +21,7 @@
     {{-- =========================Sidebar====================================== --}}
     <div class="sidebar">
 
-        <a class="menu-item @yield('feed-active')">
+        <a class="menu-item @yield('feed-active')" href="{{url('/feed')}}">
             <i class="fas fa-home"></i>
             <h3>Feed</h3>
         </a>

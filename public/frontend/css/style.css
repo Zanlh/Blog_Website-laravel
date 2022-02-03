@@ -5,7 +5,7 @@
     --color-dark: hsl(252, 30%, 17%);
     --color-black: hsl(252, 30%, 10%);
     --color-white: hsl(252, 30%, 100%);
-    --color-light: hsl(252, 30%, 97%);
+    --color-light: hsl(252, 30%, 100%);
     --color-grey: hsl(252, 15%, 65%);
     --color-danger: hsl(6, 78%, 57%);
     --color-success: hsl(145, 61%, 69%);
@@ -194,7 +194,7 @@ nav .create {
 /* ==================================================================== */
 
 .container .dropdown a {
-    color: var(--color-grey);
+    color: dark;
     text-decoration: none;
 }
 
@@ -375,6 +375,16 @@ main .container .right {
 /* @MEDIA */
 
 @media screen and (max-width: 800px) {
+    .left,
+    .main,
+    .right,
+    .container {
+        width: 100%;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
+}
+
+@media screen and (max-width: 1200px) {
     .left,
     .main,
     .right,

@@ -137,9 +137,6 @@ class PageController extends Controller
 
     public function storePost(Request $request)
     {
-
-        // dd($request->post_photos);
-
         $post = new Post();
         $photos = new media();
 
@@ -177,5 +174,19 @@ class PageController extends Controller
         $posts = Post::with('user', 'category')->orderBy('created_at', 'desc')->where('user_id', Auth::guard('web')->user()->id)->get();
 
         return view('frontend.my_posts', compact( 'profile_photo','user', 'posts'));
+    }
+
+    public function myPostDetail($id){
+        $post = Post::with('user', 'category')->where('id', $id)->where('user_id', Auth::guard('web')->user()->id)->get();
+        
+        return view('frontend.post_detail', compact('post'));
+    }
+
+    public function feed(){
+
+        $users = User::get();
+        
+
+        return view('frontend.feed');
     }
 }

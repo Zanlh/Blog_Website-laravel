@@ -45,6 +45,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        {{-- TODO: Upload images with dropzone plugin --}}
                         <label for="exampleFormControlFile1">Photos</label>
                         <input type="file"  accept="image/*" class="form-control" name="post_photos[]" multiple>
                     </div>

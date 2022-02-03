@@ -37,4 +37,7 @@ Route::middleware('auth')->namespace('Frontend')->group(function(){
     Route::post('/create-post/store','PageController@storePost');
 
     Route::get('/my-posts' ,'PageController@myPosts');
+    Route::get('/my-posts/{id}' ,'PageController@myPostDetail');
+
+    Route::get('/feed','PageController@feed');
 });
