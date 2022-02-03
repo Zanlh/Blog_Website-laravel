@@ -24,7 +24,7 @@ Route::post('admin/logout','Auth\AdminLoginController@logout')-> name('admin.log
 Auth::routes();
 Route::middleware('auth')->namespace('Frontend')->group(function(){
 
-    Route::get('/', 'PageController@home');
+    Route::get('/', 'PageController@home')->name('home');
 
     Route::get('/profile/{id}', 'PageController@profile')->name('profile');
     Route::get('/profile/edit/{id}', 'PageController@edit')->name('profile.edit');
@@ -32,4 +32,9 @@ Route::middleware('auth')->namespace('Frontend')->group(function(){
 
     Route::get('/update/password','PageController@updatePassword');
     Route::put('/update/password/store','PageController@updatePasswordStore');
+
+    Route::get('/create-post','PageController@createPost');
+    Route::post('/create-post/store','PageController@storePost');
+
+    Route::get('/my-posts' ,'PageController@myPosts');
 });

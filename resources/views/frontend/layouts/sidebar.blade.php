@@ -2,7 +2,7 @@
     <div class="profile">
         <div class="profile-photo">
             @if (Auth()->user()->photos->where('type', 1)->first() == null)
-                <img class="avatar" src="https://ui-avatars.com/api/?size=100&name={{ $Auth()->user()->name }}"
+                <img class="avatar" src="https://ui-avatars.com/api/?size=100&name={{ Auth()->user()->name }}"
                     alt="...">
             @else
                 <img class="avatar"
@@ -46,5 +46,5 @@
             <h3>Profile</h3>
         </a>
     </div>
-    <label for="create-post" class="btn btn-primary">Create</label>
+    <a for="create-post" href="{{url('/create-post')}}" class="btn btn-primary">Create</a>
 </div>
