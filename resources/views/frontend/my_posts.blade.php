@@ -5,6 +5,7 @@
 @section('content')
     <div class="my-profile">
         @foreach ($posts as $post)
+            {{-- ================================================================== --}}
             @php
                 $post_photos = $post->photos
                     ->where('type', 3)
@@ -16,6 +17,7 @@
                 }
                 $post_photos = implode(',', $post_photos_ary);
             @endphp
+            {{-- ================================================================== --}}
             <div class="card post-card">
                 {{-- <input type="hidden" id="custId" name="post_id" value="{{$post->id}}"> --}}
                 <div class="profile">
@@ -39,7 +41,7 @@
                             </a>
                             <div class="dropdown-menu pl-1" aria-labelledby="dropdownMenuLink">
                                 {{-- TODO: Edit with dropzone plugin --}}
-                                <a href="" class="dropdown-item"> <small> Edit 
+                                <a href="" class="dropdown-item"> <small> Edit
                                         Post</small></a>
                                 <a href="" class="dropdown-item"> <small> Save Post</small></a>
                             </div>
@@ -55,7 +57,6 @@
                     <h3 class="card-title text-bold mb-0">{{ $post->title }} </h3>
                     <small class="text-muted">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</small>
                     <p class="card-text mt-3">{{ $post->content }}</p>
-
                 </div>
             </div>
         @endforeach

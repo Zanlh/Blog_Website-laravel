@@ -173,20 +173,20 @@ class PageController extends Controller
         $profile_photo = $user->photos->where('type', 1)->first();
         $posts = Post::with('user', 'category')->orderBy('created_at', 'desc')->where('user_id', Auth::guard('web')->user()->id)->get();
 
-        return view('frontend.my_posts', compact( 'profile_photo','user', 'posts'));
+        return view('frontend.my_posts', compact('profile_photo', 'user', 'posts'));
     }
 
-    public function myPostDetail($id){
+    public function myPostDetail($id)
+    {
         $post = Post::with('user', 'category')->where('id', $id)->where('user_id', Auth::guard('web')->user()->id)->get();
-        
+
         return view('frontend.post_detail', compact('post'));
     }
 
-    public function feed(){
+    public function feed()
+    {
 
         $users = User::get();
-        
-
-        return view('frontend.feed');
+        return view('frontend.feed',compact('users'));
     }
 }
