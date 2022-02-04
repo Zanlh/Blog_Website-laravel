@@ -4,23 +4,21 @@
 @section('name')
 @section('content')
     <div class="my-profile">
-        @foreach ($users as $user)
+        @foreach ($posts as $post)
             {{-- ============================================================================== --}}
             @php
-                $profile_photo = $user->photos->where('type', 1)->first();
-                $posts = App\Post::with('user', 'category')
-                    ->orderBy('created_at', 'desc')
-                    ->where('user_id', $user->id)
-                    ->get();
+                $users = App\User::where('id', $post->user_id)->get();
+                
             @endphp
             {{-- ============================================================================== --}}
-            @foreach ($posts as $post)
+            @foreach ($users as $user)
                 {{-- ================================================================== --}}
                 @php
+                    $profile_photo = $user->photos->where('type', 1)->first();
                     $post_photos = $post->photos
-                        ->where('type', 3)
-                        ->pluck('path')
-                        ->toArray();
+                    ->where('type', 3)
+                    ->pluck('path')
+                    ->toArray();
                     $post_photos_ary = [];
                     foreach ($post_photos as $photo) {
                         $post_photos_ary[] = asset('storage/posts/' . $photo);
@@ -28,8 +26,8 @@
                     $post_photos = implode(',', $post_photos_ary);
                 @endphp
                 {{-- ================================================================== --}}
-                <div class="card post-card">
-                    <div class="profile"> 
+                <div class="card">
+                    <div class="profile">
                         <div class="profile-photo ml-4 mt-4">
                             <div class="avatar">
                                 @if ($profile_photo == null)

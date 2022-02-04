@@ -39,5 +39,5 @@ Route::middleware('auth')->namespace('Frontend')->group(function(){
     Route::get('/my-posts' ,'PageController@myPosts');
     Route::get('/my-posts/{id}' ,'PageController@myPostDetail');
 
-    Route::get('/feed','PageController@feed');
+    Route::get('/feed','PageController@feed')->name('feed');
 });

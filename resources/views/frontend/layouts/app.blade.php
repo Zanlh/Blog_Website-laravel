@@ -44,7 +44,7 @@
     <nav>
         <div class="container">
             <h2 class="log"><a style="color:#84CB9A"
-                    href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a></h2>
+                    href="{{ url('/feed') }}">{{ config('app.name', 'Laravel') }}</a></h2>
             @guest
                 @if (Route::has('register'))
                 @endif

@@ -14,7 +14,7 @@
             @endif
         </div>
 
-        <div class="handle">
+        <div class="handle mb-0 mt-2">
             <h4>{{ Auth()->user()->name }}</h4>
         </div>
     </div>

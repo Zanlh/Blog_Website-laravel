@@ -164,7 +164,7 @@ class PageController extends Controller
             }
         }
 
-        return redirect()->route('home')->with('create', 'Post created successfully.');
+        return redirect()->route('feed')->with('create', 'Post created successfully.');
     }
 
     public function myPosts()
@@ -185,8 +185,7 @@ class PageController extends Controller
 
     public function feed()
     {
-
-        $users = User::get();
-        return view('frontend.feed',compact('users'));
+        $posts  = Post::orderBy('created_at','desc')->get();
+        return view('frontend.feed',compact('posts'));
     }
 }
